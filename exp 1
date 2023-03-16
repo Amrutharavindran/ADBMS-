@@ -112,5 +112,33 @@ mysql> DESC PRODUCT;
 +--------+-------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
-
 //VERIFIED
+
+mysql> CREATE TABLE INVOICE_MASTER(INV_ID INT PRIMARY KEY,CUST_ID INT,INV_DATE DATE,FOREIGN KEY(CUST_ID) REFERENCES CUSTOMER(C_ID));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc INVOICE_MASTER;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| INV_ID   | int  | NO   | PRI | NULL    |       |
+| CUST_ID  | int  | YES  | MUL | NULL    |       |
+| INV_DATE | date | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE INVOICE_ITEM(INV_ID INT,PID INT,QUANTITY INT,FOREIGN KEY(INVQuery OK, 0 rows affected (0.01 sec)D),FOREIGN KEY(PID) REFERENCES PRODUCT(P_ID));
+
+mysql> desc INVOICE_ITEM;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| INV_ID   | int  | YES  | MUL | NULL    |       |
+| PID      | int  | YES  | MUL | NULL    |       |
+| QUANTITY | int  | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+
+
+

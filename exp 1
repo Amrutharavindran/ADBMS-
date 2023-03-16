@@ -139,6 +139,106 @@ mysql> desc INVOICE_ITEM;
 +----------+------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
 
+b)DDL COMMANDS- ALTER & DROP
+
+// QUESTION 1. Add a column ‘SSN’ at the first position in the table EMPLOYEE
+
+mysql> ALTER TABLE EMPLOYEE ADD  SSN INT FIRST;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+//QUESTION 2. Change the data type of the column ‘DOB’  in year the table EMPLOYEE  
+
+mysql> ALTER TABLE EMPLOYEE MODIFY emp_dob year;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| SSN        | int         | YES  |     | NULL    |       |
+| emp_id     | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_city   | varchar(50) | YES  |     | NULL    |       |
+| emp_dob    | year        | YES  |     | NULL    |       |
+| aadhaar_no | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+//QUESTION 3. Delete the column ‘emp_id’ the table EMPLOYEE.
+
+mysql> alter table EMPLOYEE drop column emp_id;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| SSN        | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_city   | varchar(50) | YES  |     | NULL    |       |
+| emp_dob    | year        | YES  |     | NULL    |       |
+| aadhaar_no | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+//QUESTION 4. Add  the constraint unique for columns ‘SSN, ‘adhar_no’ the table EMPLOYEE
+mysql> alter table EMPLOYEE add constraint c1 unique(SSN),add constraint c2 unique(aadhaar_no);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| SSN        | int         | YES  | UNI | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_city   | varchar(50) | YES  |     | NULL    |       |
+| emp_dob    | year        | YES  |     | NULL    |       |
+| aadhaar_no | int         | YES  | UNI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+//QUESTION 5. Delete the NULL constraint of ‘age’ in the STUDENT table.
+mysql> ALTER table STUDENTS modify age int null;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc STUDENTS;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| gender  | varchar(20) | YES  |     | m       |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+//QUESTION6. Change the table name EMPLOYEE as PERSON
+
+mysql> ALTER TABLE EMPLOYEE RENAME PERSON;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DESC PERSON;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| SSN        | int         | YES  | UNI | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_city   | varchar(50) | YES  |     | NULL    |       |
+| emp_dob    | year        | YES  |     | NULL    |       |
+| aadhaar_no | int         | YES  | UNI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+//QUESTION 7. Delete the table STUDENT1.
+mysql> DROP table STUDENT1;
+Query OK, 0 rows affected (0.00 sec)
+
 
 
 

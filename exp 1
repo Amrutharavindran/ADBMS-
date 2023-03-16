@@ -57,3 +57,21 @@ mysql> desc STUDENT1;
 
 //QUESTION 4:Create a duplicate table of EMPLOYEE.
 
+mysql> create table if not exists employee_dup select * from EMPLOYEE;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_dup;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| emp_id     | int         | YES  |     | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_city   | varchar(50) | YES  |     | NULL    |       |
+| emp_dob    | date        | YES  |     | NULL    |       |
+| aadhaar_no | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+

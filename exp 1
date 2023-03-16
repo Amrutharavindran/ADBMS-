@@ -239,6 +239,23 @@ mysql> DESC PERSON;
 mysql> DROP table STUDENT1;
 Query OK, 0 rows affected (0.00 sec)
 
+mysql> show tables;
++--------------------+
+| Tables_in_amruthak |
++--------------------+
+| PERSON             |
+| STUDENTS           |
+| book               |
+| employee           |
+| employee_dup       |
+| person             |
+| student            |
+| teacher            |
++--------------------+
+8 rows in set (0.01 sec)
+
+
+
 
 
 

@@ -73,5 +73,10 @@ mysql> desc employee_dup;
 +------------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
 
+//QUESTION 5:Create an INVOICE database and having following tables
+                      Customer(id, name, address, city, ph_no)
+                      Product(pid,  pname, price (default 0))
+                      Invoice_master(inv_id, cust_id(FK), inv_date)
+                      Invoice_item(inv_id (FK),  pid(FK), quantity)
 
 

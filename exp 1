@@ -39,3 +39,19 @@ mysql> desc STUDENTS;
 
 //QUESTION 3: 3.Create a temporary table STUDENT1 of STUDENT relation.
 
+mysql> create temporary table STUDENT1 select *from STUDENTS;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc STUDENT1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   |     | NULL    | NULL  |
+| name    | varchar(20) | NO   |     | NULL    | NULL  |
+| age     | int         | YES  |     | NULL    | NULL  |
+| gender  | varchar(20) | YES  |     | m       | NULL  |
+| address | varchar(20) | YES  |     | NULL    | NULL  |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+

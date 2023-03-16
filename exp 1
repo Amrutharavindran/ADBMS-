@@ -79,4 +79,34 @@ mysql> desc employee_dup;
                       Invoice_master(inv_id, cust_id(FK), inv_date)
                       Invoice_item(inv_id (FK),  pid(FK), quantity)
 
+mysql> create database INVOICE;
+Query OK, 1 row affected (0.00 sec)
+mysql> use INVOICE
+Database changed
+mysql> create table CUSTOMER(C_ID INT PRIMARY KEY,NAME VARCHAR(20),ADDRESS VARCHAR(35),CITY VARCHAR(25),PH_NO INT);
+Query OK, 0 rows affected (0.02 sec)
 
+mysql> DESC CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| C_ID    | int         | NO   | PRI | NULL    |       |
+| NAME    | varchar(20) | YES  |     | NULL    |       |
+| ADDRESS | varchar(35) | YES  |     | NULL    |       |
+| CITY    | varchar(25) | YES  |     | NULL    |       |
+| PH_NO   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> CREATE TABLE PRODUCT(P_ID INT PRIMARY KEY,P_NAME VARCHAR(15),PRICE INT DEFAULT '0');
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC PRODUCT;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| P_ID   | int         | NO   | PRI | NULL    |       |
+| P_NAME | varchar(15) | YES  |     | NULL    |       |
+| PRICE  | int         | YES  |     | 0       |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)

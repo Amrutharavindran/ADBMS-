@@ -1,7 +1,7 @@
-QUESTION DML COMMANDS
-1. Insert values in EMPLOYEE table.
-2. Insert values in STUDENT table.
-3. Insert values in INVOICE database. 
+QUESTION
+ a) DDL COMMANDS-CREATE
+ 1. Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
+ 
 create table EMPLOYEE(emp_id int,emp_name varchar(20),emp_city varchar(50),emp_dob date,aadhaar_no int);
 Query OK, 0 rows affected (0.01 sec)
 

@@ -1,8 +1,8 @@
-QUESTION
+
  a) DDL COMMANDS-CREATE
- 1. Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
+ //QUESTION 1: Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
  
-create table EMPLOYEE(emp_id int,emp_name varchar(20),emp_city varchar(50),emp_dob date,aadhaar_no int);
+mysql> create table EMPLOYEE(emp_id int,emp_name varchar(20),emp_city varchar(50),emp_dob date,aadhaar_no int);
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> desc EMPLOYEE;
@@ -16,3 +16,11 @@ mysql> desc EMPLOYEE;
 | aadhaar_no | int         | YES  |     | NULL    |       |
 +------------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+//QUESTION 2 : Create a table STUDENT have the fields(roll_no, name, age, address, gender)and add following constraints on it.
+ Roll_no – Primary key
+ Name – does not allow null values
+ Age- must be in between (0-99), does not allow null values
+ Gender- default value is ‘m’
+ 
+ mysql> create table STUDENTS(roll_no int primary key,name varchar(20) not null,age int check(age<100),gender varchar(20) default 'm',address varchar(20));
+Query OK, 0 rows affected (0.02 sec)

@@ -1,0 +1,242 @@
+1.2 DML COMMANDS 
+
+a) DML COMMANDS-INSERT
+         // 1.      Insert values in EMPLOYEE table.
+         
+ mysql> desc EMPLOYEE;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| SSN        | int         | YES  | UNI | NULL    |       |
+| emp_name   | varchar(20) | YES  |     | NULL    |       |
+| emp_city   | varchar(50) | YES  |     | NULL    |       |
+| emp_dob    | year        | YES  |     | NULL    |       |
+| aadhaar_no | int         | YES  | UNI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+        
+ mysql> insert into EMPLOYEE values(13,'Meera','Kozhikode',2001,2994561);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values(23,'Das','Malappuram',1999,2214561);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values(18,'Sradha','Thrissur',2002,445861);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values(48,'Megha','Ernakulam',1997,876523);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values(52,'vishal','Kollam',1993,9276523);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
++------+----------+------------+---------+------------+
+| SSN  | emp_name | emp_city   | emp_dob | aadhaar_no |
++------+----------+------------+---------+------------+
+|   13 | Meera    | Kozhikode  |    2001 |    2994561 |
+|   23 | Das      | Malappuram |    1999 |    2214561 |
+|   18 | Sradha   | Thrissur   |    2002 |     445861 |
+|   48 | Megha    | Ernakulam  |    1997 |     876523 |
+|   52 | vishal   | Kollam     |    1993 |    9276523 |
++------+----------+------------+---------+------------+
+5 rows in set (0.00 sec)
+
+//2.      Insert values in STUDENT table.
+
+mysql> desc STUDENTS;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| gender  | varchar(20) | YES  |     | m       |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> insert into STUDENTS values(1,'Ameena',20,'female','kuzhinilam');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into STUDENTS values(2,'Adithyan',22,'male','sreevalsam');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into STUDENTS values(3,'Devi',21,'female','kizhakkethiruv');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into STUDENTS values(4,'shuhaib',21,'male','fida manzil');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into STUDENTS values(5,'pranav',23,'male','vellayil');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from STUDENTS;
++---------+----------+------+--------+----------------+
+| roll_no | name     | age  | gender | address        |
++---------+----------+------+--------+----------------+
+|       1 | Ameena   |   20 | female | kuzhinilam     |
+|       2 | Adithyan |   22 | male   | sreevalsam     |
+|       3 | Devi     |   21 | female | kizhakkethiruv |
+|       4 | shuhaib  |   21 | male   | fida manzil    |
+|       5 | pranav   |   23 | male   | vellayil       |
++---------+----------+------+--------+----------------+
+5 rows in set (0.00 sec)
+
+//3.Insert values in INVOICE database. 
+
+           //CUSTOMER TABLE
+           
+ mysql> desc CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| C_ID    | int         | NO   | PRI | NULL    |       |
+| NAME    | varchar(20) | YES  |     | NULL    |       |
+| ADDRESS | varchar(35) | YES  |     | NULL    |       |
+| CITY    | varchar(25) | YES  |     | NULL    |       |
+| PH_NO   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+
+mysql> insert into CUSTOMER  values(121,'pranav','manmapplii house','kozhikode',9845127890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CUSTOMER  values(134,'priya','chakkalakal','kottayam',9845137890);
+Query OK, 1 row affected (0.00 sec)
+mysql> insert into CUSTOMER  values(145,'Anitta','Kizhakketheruv','kannur',7306296837);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CUSTOMER  values(115,'Raghav','pularipadam','kollam',7226296837);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CUSTOMER  values(234,'saniya','chakkaraparamb','Alappuzha',9876432110);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CUSTOMER  values(543,'Bindhu','manavvilas','Alappuzha',9878882110);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CUSTOMER  values(767,'Nidhal','razakhouse','Kozhikode',8756431290);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM  CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | Kizhakketheruv   | kannur    | 7306296837 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  650 | CHINJU | MELEPARAMB       | IDUKKI    | NULL       |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+
+
+
+         // PRODUCT TABLE
+         
+ mysql> desc PRODUCT;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| P_ID   | int         | NO   | PRI | NULL    |       |
+| P_NAME | varchar(15) | YES  |     | NULL    |       |
+| PRICE  | int         | YES  |     | 0       |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+   
+
+mysql> insert into PRODUCT values(117,'Book',180);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into PRODUCT values(230,'Bottle',250);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into PRODUCT values(457,'Bag',1000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into PRODUCT values(786,'Snacks',540);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into PRODUCT values(986,'Lunch Box',400);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into PRODUCT values(222,'Floor cleaner',320);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into PRODUCT values(880,'Soap',50);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   180 |
+|  222 | Floor cleaner |   320 |
+|  230 | Bottle        |   250 |
+|  457 | Bag           |  1000 |
+|  786 | Snacks        |   540 |
+|  880 | Soap          |    50 |
+|  986 | Lunch Box     |   400 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
+
+//INVOICE_MASTER
+
+mysql> desc INVOICE_MASTER;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| INV_ID   | int  | NO   | PRI | NULL    |       |
+| CUST_ID  | int  | YES  | MUL | NULL    |       |
+| INV_DATE | date | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into INVOICE_MASTER values(001,121,'2023-03-13');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into INVOICE_MASTER values(042,115,'2023-06-18');
+Query OK, 1 row affected (0.00 sec)
+mysql> insert into INVOICE_MASTER values(100,115,'2023-05-29');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into INVOICE_MASTER values(104,134,'2020-12-02');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into INVOICE_MASTER values(190,234,'2022-03-20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into INVOICE_MASTER values(752,543,'2022-11-12');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into INVOICE_MASTER values(300,767,'2023-01-19');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from INVOICE_MASTER;
++--------+---------+------------+
+| INV_ID | CUST_ID | INV_DATE   |
++--------+---------+------------+
+|      1 |     121 | 2023-03-13 |
+|     42 |     115 | 2023-06-18 |
+|    100 |     115 | 2023-05-29 |
+|    104 |     134 | 2020-12-02 |
+|    190 |     234 | 2022-03-20 |
+|    300 |     767 | 2023-01-19 |
+|    752 |     543 | 2022-11-12 |
++--------+---------+------------+
+7 rows in set (0.00 sec)
+
+//INVOICE_ITEM
+
+
+
+
+
+
+     

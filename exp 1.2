@@ -106,6 +106,7 @@ Query OK, 1 row affected (0.00 sec)
 
 mysql> insert into CUSTOMER  values(134,'priya','chakkalakal','kottayam',9845137890);
 Query OK, 1 row affected (0.00 sec)
+
 mysql> insert into CUSTOMER  values(145,'Anitta','Kizhakketheruv','kannur',7306296837);
 Query OK, 1 row affected (0.00 sec)
 
@@ -118,10 +119,17 @@ Query OK, 1 row affected (0.00 sec)
 mysql> insert into CUSTOMER  values(543,'Bindhu','manavvilas','Alappuzha',9878882110);
 Query OK, 1 row affected (0.00 sec)
 
+mysql> insert into CUSTOMER(C_ID,NAME,ADDRESS,CITY) value(650,'CHINJU','MELEPARAMB','IDUKKI');
+Query OK, 1 row affected (0.00 sec)
+
+
 mysql> insert into CUSTOMER  values(767,'Nidhal','razakhouse','Kozhikode',8756431290);
 Query OK, 1 row affected (0.00 sec)
 
-mysql> SELECT * FROM  CUSTOMER;
+mysql> insert into CUSTOMER(C_ID,NAME,ADDRESS,CITY) value(344,'fidha','rose garden','calicut');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from CUSTOMER;
 +------+--------+------------------+-----------+------------+
 | C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
 +------+--------+------------------+-----------+------------+
@@ -130,11 +138,12 @@ mysql> SELECT * FROM  CUSTOMER;
 |  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
 |  145 | Anitta | Kizhakketheruv   | kannur    | 7306296837 |
 |  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  344 | fidha  | rose garden      | calicut   | NULL       |
 |  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
 |  650 | CHINJU | MELEPARAMB       | IDUKKI    | NULL       |
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
-8 rows in set (0.00 sec)
+9 rows in set (0.00 sec)
 
 
 
@@ -233,6 +242,50 @@ mysql> select *from INVOICE_MASTER;
 7 rows in set (0.00 sec)
 
 //INVOICE_ITEM
+
+mysql> desc INVOICE_ITEM;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| INV_ID   | int  | YES  | MUL | NULL    |       |
+| PID      | int  | YES  | MUL | NULL    |       |
+| QUANTITY | int  | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+mysql> insert into INVOICE_ITEM values(100,222,4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into INVOICE_ITEM values(42,222,3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into INVOICE_ITEM values(100,457,5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into INVOICE_ITEM values(190,986,10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into INVOICE_ITEM values(190,880,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into INVOICE_ITEM values(752,880,10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into INVOICE_ITEM values(300,230,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |        4 |
+|     42 |  222 |        3 |
+|    100 |  457 |        5 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
+|    300 |  230 |        1 |
++--------+------+----------+
+7 rows in set (0.01 sec)
 
 
 

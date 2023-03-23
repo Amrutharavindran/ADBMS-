@@ -79,6 +79,79 @@ mysql> select * from EMPLOYEE;
 
 3.    Savepoint
 
+mysql> select * from EMPLOYEE;
++------+----------+------------+---------+------------+
+| SSN  | emp_name | emp_city   | emp_dob | aadhaar_no |
++------+----------+------------+---------+------------+
+|   13 | Meera    | Kozhikode  |    2001 |    2994561 |
+|   23 | Das      | Malappuram |    1999 |    2214561 |
+|   18 | Sradha   | Thrissur   |    2002 |     445861 |
+|   48 | Megha    | Ernakulam  |    1997 |     876523 |
+|   52 | vishal   | Kollam     |    1993 |    9276523 |
+|   45 | Ananthu  | wayanad    |    2003 |    2345667 |
+|   87 | anitha   | palakkad   |    2003 |  456677866 |
++------+----------+------------+---------+------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into EMPLOYEE values(32,"mithra","delhi",1986,1127466);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint a1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values(44,"alan","gujarat",1998,115566);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint a2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into EMPLOYEE values(90,"madhav","kolkata",2001,1334336);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint a3;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+----------+------------+---------+------------+
+| SSN  | emp_name | emp_city   | emp_dob | aadhaar_no |
++------+----------+------------+---------+------------+
+|   13 | Meera    | Kozhikode  |    2001 |    2994561 |
+|   23 | Das      | Malappuram |    1999 |    2214561 |
+|   18 | Sradha   | Thrissur   |    2002 |     445861 |
+|   48 | Megha    | Ernakulam  |    1997 |     876523 |
+|   52 | vishal   | Kollam     |    1993 |    9276523 |
+|   45 | Ananthu  | wayanad    |    2003 |    2345667 |
+|   87 | anitha   | palakkad   |    2003 |  456677866 |
+|   32 | mithra   | delhi      |    1986 |    1127466 |
+|   44 | alan     | gujarat    |    1998 |     115566 |
+|   90 | madhav   | kolkata    |    2001 |    1334336 |
++------+----------+------------+---------+------------+
+10 rows in set (0.00 sec)
+
+mysql> rollback to a2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+----------+------------+---------+------------+
+| SSN  | emp_name | emp_city   | emp_dob | aadhaar_no |
++------+----------+------------+---------+------------+
+|   13 | Meera    | Kozhikode  |    2001 |    2994561 |
+|   23 | Das      | Malappuram |    1999 |    2214561 |
+|   18 | Sradha   | Thrissur   |    2002 |     445861 |
+|   48 | Megha    | Ernakulam  |    1997 |     876523 |
+|   52 | vishal   | Kollam     |    1993 |    9276523 |
+|   45 | Ananthu  | wayanad    |    2003 |    2345667 |
+|   87 | anitha   | palakkad   |    2003 |  456677866 |
+|   32 | mithra   | delhi      |    1986 |    1127466 |
+|   44 | alan     | gujarat    |    1998 |     115566 |
++------+----------+------------+---------+------------+
+9 rows in set (0.00 sec)
+
+
+
 b) DCL COMMAND
           Create two users user1, user2
          1.      GRANT

@@ -476,6 +476,128 @@ mysql> select *FROM INVOICE_ITEM;
 +--------+------+----------+
 7 rows in set (0.00 sec)
 
+c) DML COMMAND- DELETE
+**********************
+
+//1. Delete the record of customer id ‘650’. 
+
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  344 | fidha  | rose garden      | kozhikode | NULL       |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  650 | CHINJU | MELEPARAMB       | IDUKKI    | NULL       |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+9 rows in set (0.01 sec)
+
+mysql> delete from CUSTOMER where C_ID= 650;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  344 | fidha  | rose garden      | kozhikode | NULL       |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+
+//2. Delete all purchase details of items its quantity less than 2.
+
+mysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|     42 |  222 |        3 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
+|    300 |  230 |        1 |
++--------+------+----------+
+7 rows in set (0.00 sec)
+
+mysql> delete from INVOICE_ITEM where QUANTITY<2 ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|     42 |  222 |        3 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+
+//3. Delete the purchase details of product ‘FLOOR CLEANER’ in the inv_id ‘42’. 
+
+
+mysql> select * from  PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   184 |
+|  222 | Floor cleaner |   326 |
+|  230 | Bottle        |   255 |
+|  457 | Bag           |  1020 |
+|  786 | Snacks        |   551 |
+|  880 | Soap          |    82 |
+|  986 | Lunch Box     |   408 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|     42 |  222 |        3 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> delete from INVOICE_ITEM where INV_ID=42  AND PID=222;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+//4. Delete details of employees who does not have phone number. 
+
+
+                      5. Delete all records from STUDENT table. 
+                      6. Delete Invoice details of a particular customer.
 
 
 

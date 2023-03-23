@@ -1,10 +1,12 @@
-1.2 DML COMMANDS 
-.................
 
-a) DML COMMANDS-INSERT
-***********************
+                                 1.2 DML COMMANDS 
+                                 .................
 
-         // 1.      Insert values in EMPLOYEE table.
+
+                              a) DML COMMANDS-INSERT
+                              ***********************
+
+ // 1. Insert values in EMPLOYEE table.
          
  mysql> desc EMPLOYEE;
 +------------+-------------+------+-----+---------+-------+
@@ -17,6 +19,7 @@ a) DML COMMANDS-INSERT
 | aadhaar_no | int         | YES  | UNI | NULL    |       |
 +------------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+......................................................................
         
  mysql> insert into EMPLOYEE values(13,'Meera','Kozhikode',2001,2994561);
 Query OK, 1 row affected (0.00 sec)
@@ -58,6 +61,7 @@ mysql> desc STUDENTS;
 | address | varchar(20) | YES  |     | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+...........................................................
 
 
 mysql> insert into STUDENTS values(1,'Ameena',20,'female','kuzhinilam');
@@ -103,6 +107,7 @@ mysql> select * from STUDENTS;
 | PH_NO   | int         | YES  |     | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
 5 rows in set (0.01 sec)
+...........................................................
 
 
 mysql> insert into CUSTOMER  values(121,'pranav','manmapplii house','kozhikode',9845127890);
@@ -161,6 +166,7 @@ mysql> select * from CUSTOMER;
 | PRICE  | int         | YES  |     | 0       |       |
 +--------+-------------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
+..........................................................
    
 
 mysql> insert into PRODUCT values(117,'Book',180);
@@ -210,6 +216,7 @@ mysql> desc INVOICE_MASTER;
 | INV_DATE | date | YES  |     | NULL    |       |
 +----------+------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
+...............................................................
 
 mysql> insert into INVOICE_MASTER values(001,121,'2023-03-13');
 Query OK, 1 row affected (0.01 sec)
@@ -257,6 +264,7 @@ mysql> desc INVOICE_ITEM;
 | QUANTITY | int  | YES  |     | NULL    |       |
 +----------+------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
+...................................................
 mysql> insert into INVOICE_ITEM values(100,222,4);
 Query OK, 1 row affected (0.00 sec)
 
@@ -310,6 +318,7 @@ mysql> select * from PRODUCT;
 |  986 | Lunch Box     |   400 |
 +------+---------------+-------+
 7 rows in set (0.00 sec)
+.....................................................
 
 mysql> update PRODUCT set PRICE=80 where P_ID=880;
 Query OK, 1 row affected (0.00 sec)
@@ -346,7 +355,7 @@ mysql> select * from CUSTOMER;
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 9 rows in set (0.00 sec)
-
+.................................................................
 
 mysql> update CUSTOMER set CITY='kozhikode' where C_ID=344;
 Query OK, 1 row affected (0.00 sec)
@@ -383,6 +392,7 @@ mysql> select * from PRODUCT;
 |  986 | Lunch Box     |   400 |
 +------+---------------+-------+
 7 rows in set (0.00 sec)
+....................................................
 
 
 mysql> update PRODUCT SET PRICE=PRICE+(PRICE*2/100);
@@ -420,6 +430,7 @@ mysql> select *from CUSTOMER;
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 9 rows in set (0.00 sec)
+.........................................................................................................
 
 mysql> update CUSTOMER SET CITY='PALAKKAD', ADDRESS='THEKKEPULLIYAL', PH_NO=9876543211 WHERE C_ID=145;
 Query OK, 1 row affected (0.00 sec)
@@ -456,7 +467,7 @@ mysql> select * from INVOICE_ITEM;
 |    300 |  230 |        1 |
 +--------+------+----------+
 7 rows in set (0.01 sec)
-
+...........................................................
 
 mysql> update INVOICE_ITEM set QUANTITY=22 where INV_ID=100;
 Query OK, 2 rows affected (0.01 sec)
@@ -476,8 +487,8 @@ mysql> select *FROM INVOICE_ITEM;
 +--------+------+----------+
 7 rows in set (0.00 sec)
 
-c) DML COMMAND- DELETE
-**********************
+                   c) DML COMMAND- DELETE
+                   **********************
 
 //1. Delete the record of customer id ‘650’. 
 
@@ -496,6 +507,8 @@ mysql> select * from CUSTOMER;
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 9 rows in set (0.01 sec)
+
+...............................................................
 
 mysql> delete from CUSTOMER where C_ID= 650;
 Query OK, 1 row affected (0.00 sec)
@@ -530,6 +543,7 @@ mysql> select * from INVOICE_ITEM;
 |    300 |  230 |        1 |
 +--------+------+----------+
 7 rows in set (0.00 sec)
+.................................................
 
 mysql> delete from INVOICE_ITEM where QUANTITY<2 ;
 Query OK, 1 row affected (0.00 sec)
@@ -577,6 +591,7 @@ mysql> SELECT * FROM INVOICE_ITEM;
 |    752 |  880 |       10 |
 +--------+------+----------+
 6 rows in set (0.00 sec)
+..............................................................
 
 mysql> delete from INVOICE_ITEM where INV_ID=42  AND PID=222;
 Query OK, 1 row affected (0.00 sec)
@@ -596,8 +611,96 @@ mysql> SELECT * FROM INVOICE_ITEM;
 //4. Delete details of employees who does not have phone number. 
 
 
-                      5. Delete all records from STUDENT table. 
-                      6. Delete Invoice details of a particular customer.
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  344 | fidha  | rose garden      | kozhikode | NULL       |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+.................................................................
+
+mysql> delete from CUSTOMER where PH_NO is null;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+//5. Delete all records from STUDENT table. 
+
+mysql> select * from STUDENTS;
++---------+----------+------+--------+----------------+
+| roll_no | name     | age  | gender | address        |
++---------+----------+------+--------+----------------+
+|       1 | Ameena   |   20 | female | kuzhinilam     |
+|       2 | Adithyan |   22 | male   | sreevalsam     |
+|       3 | Devi     |   21 | female | kizhakkethiruv |
+|       4 | shuhaib  |   21 | male   | fida manzil    |
+|       5 | pranav   |   23 | male   | vellayil       |
++---------+----------+------+--------+----------------+
+5 rows in set (0.00 sec)
+
+................................................................
+
+mysql> delete from STUDENTS;
+Query OK, 5 rows affected (0.00 sec)
+
+mysql> select * from STUDENTS;
+Empty set (0.00 sec)
+
+//6. Delete Invoice details of a particular customer.
+
+
+mysql> select * from INVOICE_MASTER;
++--------+---------+------------+
+| INV_ID | CUST_ID | INV_DATE   |
++--------+---------+------------+
+|      1 |     121 | 2023-03-13 |
+|     42 |     115 | 2023-06-18 |
+|    100 |     115 | 2023-05-29 |
+|    104 |     134 | 2020-12-02 |
+|    190 |     234 | 2022-03-20 |
+|    300 |     767 | 2023-01-19 |
+|    752 |     543 | 2022-11-12 |
++--------+---------+------------+
+7 rows in set (0.01 sec)
+....................................................
+
+mysql> delete from INVOICE_MASTER where CUST_ID= 134;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from INVOICE_MASTER;
++--------+---------+------------+
+| INV_ID | CUST_ID | INV_DATE   |
++--------+---------+------------+
+|      1 |     121 | 2023-03-13 |
+|     42 |     115 | 2023-06-18 |
+|    100 |     115 | 2023-05-29 |
+|    190 |     234 | 2022-03-20 |
+|    300 |     767 | 2023-01-19 |
+|    752 |     543 | 2022-11-12 |
++--------+---------+------------+
+6 rows in set (0.00 sec)
+
+
 
 
 

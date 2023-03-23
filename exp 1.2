@@ -1,6 +1,9 @@
 1.2 DML COMMANDS 
+.................
 
 a) DML COMMANDS-INSERT
+***********************
+
          // 1.      Insert values in EMPLOYEE table.
          
  mysql> desc EMPLOYEE;
@@ -87,6 +90,7 @@ mysql> select * from STUDENTS;
 //3.Insert values in INVOICE database. 
 
            //CUSTOMER TABLE
+           ..................
            
  mysql> desc CUSTOMER;
 +---------+-------------+------+-----+---------+-------+
@@ -145,9 +149,8 @@ mysql> select * from CUSTOMER;
 +------+--------+------------------+-----------+------------+
 9 rows in set (0.00 sec)
 
-
-
-         // PRODUCT TABLE
+          // PRODUCT TABLE
+          ..................
          
  mysql> desc PRODUCT;
 +--------+-------------+------+-----+---------+-------+
@@ -196,6 +199,7 @@ mysql> select * from PRODUCT;
 7 rows in set (0.00 sec)
 
 //INVOICE_MASTER
+.................
 
 mysql> desc INVOICE_MASTER;
 +----------+------+------+-----+---------+-------+
@@ -242,6 +246,7 @@ mysql> select *from INVOICE_MASTER;
 7 rows in set (0.00 sec)
 
 //INVOICE_ITEM
+...............
 
 mysql> desc INVOICE_ITEM;
 +----------+------+------+-----+---------+-------+
@@ -288,8 +293,23 @@ mysql> select * from INVOICE_ITEM;
 7 rows in set (0.01 sec)
 
 b)DML COMMANDS- UPDATE
+.......................
 
 //1. Update the price of a particular product. 
+
+mysql> select * from PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   180 |
+|  222 | Floor cleaner |   320 |
+|  230 | Bottle        |   250 |
+|  457 | Bag           |  1000 |
+|  786 | Snacks        |   540 |
+|  880 | Soap          |    50 |
+|  986 | Lunch Box     |   400 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
 
 mysql> update PRODUCT set PRICE=80 where P_ID=880;
 Query OK, 1 row affected (0.00 sec)
@@ -310,6 +330,23 @@ mysql> select * from PRODUCT;
 7 rows in set (0.00 sec)
 
 //2. Change the name of city ‘calicut’ to ‘kozhikode’ in the customer table. 
+
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | Kizhakketheruv   | kannur    | 7306296837 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  344 | fidha  | rose garden      | calicut   | NULL       |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  650 | CHINJU | MELEPARAMB       | IDUKKI    | NULL       |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+9 rows in set (0.00 sec)
+
 
 mysql> update CUSTOMER set CITY='kozhikode' where C_ID=344;
 Query OK, 1 row affected (0.00 sec)
@@ -333,6 +370,21 @@ mysql> select *from CUSTOMER;
 
 //3. Update all prices with 2% of its original price. 
 
+mysql> select * from PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   180 |
+|  222 | Floor cleaner |   320 |
+|  230 | Bottle        |   250 |
+|  457 | Bag           |  1000 |
+|  786 | Snacks        |   540 |
+|  880 | Soap          |    80 |
+|  986 | Lunch Box     |   400 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
+
+
 mysql> update PRODUCT SET PRICE=PRICE+(PRICE*2/100);
 Query OK, 7 rows affected (0.00 sec)
 Rows matched: 7  Changed: 7  Warnings: 0
@@ -352,6 +404,22 @@ mysql> SELECT * FROM PRODUCT;
 7 rows in set (0.00 sec)
 
 4. Change the address, city, phone number of a particular customer. 
+
+mysql> select *from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | Kizhakketheruv   | kannur    | 7306296837 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  344 | fidha  | rose garden      | kozhikode | NULL       |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  650 | CHINJU | MELEPARAMB       | IDUKKI    | NULL       |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+9 rows in set (0.00 sec)
 
 mysql> update CUSTOMER SET CITY='PALAKKAD', ADDRESS='THEKKEPULLIYAL', PH_NO=9876543211 WHERE C_ID=145;
 Query OK, 1 row affected (0.00 sec)
@@ -373,7 +441,42 @@ mysql> SELECT * FROM CUSTOMER;
 +------+--------+------------------+-----------+------------+
 9 rows in set (0.00 sec)
 
-5. Change the quantity of a purchased product of inv_id ‘101’
+//5. Change the quantity of a purchased product of inv_id ‘101’
+
+mysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |        4 |
+|     42 |  222 |        3 |
+|    100 |  457 |        5 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
+|    300 |  230 |        1 |
++--------+------+----------+
+7 rows in set (0.01 sec)
+
+
+mysql> update INVOICE_ITEM set QUANTITY=22 where INV_ID=100;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select *FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|     42 |  222 |        3 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
+|    300 |  230 |        1 |
++--------+------+----------+
+7 rows in set (0.00 sec)
+
+
 
 
 

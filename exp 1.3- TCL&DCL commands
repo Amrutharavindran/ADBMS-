@@ -1,8 +1,47 @@
                          a) TCL COMMANDS
                          ****************
-           1.    Commit
+1.    Commit
            
-           2.    Rollback
+ mysql> set autocommit=off;
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> select * from EMPLOYEE;
++------+----------+------------+---------+------------+
+| SSN  | emp_name | emp_city   | emp_dob | aadhaar_no |
++------+----------+------------+---------+------------+
+|   13 | Meera    | Kozhikode  |    2001 |    2994561 |
+|   23 | Das      | Malappuram |    1999 |    2214561 |
+|   18 | Sradha   | Thrissur   |    2002 |     445861 |
+|   48 | Megha    | Ernakulam  |    1997 |     876523 |
+|   52 | vishal   | Kollam     |    1993 |    9276523 |
+|   45 | Ananthu  | wayanad    |    2003 |    2345667 |
++------+----------+------------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into EMPLOYEE values(87,"anitha","palakkad",2003,456677866);
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from EMPLOYEE;
++------+----------+------------+---------+------------+
+| SSN  | emp_name | emp_city   | emp_dob | aadhaar_no |
++------+----------+------------+---------+------------+
+|   13 | Meera    | Kozhikode  |    2001 |    2994561 |
+|   23 | Das      | Malappuram |    1999 |    2214561 |
+|   18 | Sradha   | Thrissur   |    2002 |     445861 |
+|   48 | Megha    | Ernakulam  |    1997 |     876523 |
+|   52 | vishal   | Kollam     |    1993 |    9276523 |
+|   45 | Ananthu  | wayanad    |    2003 |    2345667 |
+|   87 | anitha   | palakkad   |    2003 |  456677866 |
++------+----------+------------+---------+------------+
+7 rows in set (0.00 sec)
+
+
+2.    Rollback
            
            3.    Savepoint
 

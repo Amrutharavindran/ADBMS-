@@ -39,6 +39,7 @@ mysql> select * from EMPLOYEE;
 |   87 | anitha   | palakkad   |    2003 |  456677866 |
 +------+----------+------------+---------+------------+
 7 rows in set (0.00 sec)
+...............................................................
 
 2.    Rollback
 
@@ -76,7 +77,7 @@ mysql> select * from EMPLOYEE;
 |   87 | anitha   | palakkad   |    2003 |  456677866 |
 +------+----------+------------+---------+------------+
 7 rows in set (0.00 sec)
-
+...............................................................
 3.    Savepoint
 
 mysql> select * from EMPLOYEE;
@@ -113,6 +114,7 @@ Query OK, 1 row affected (0.00 sec)
 
 mysql> savepoint a3;
 Query OK, 0 rows affected (0.00 sec)
+.................................................................
 
 mysql> select * from EMPLOYEE;
 +------+----------+------------+---------+------------+
@@ -130,6 +132,7 @@ mysql> select * from EMPLOYEE;
 |   90 | madhav   | kolkata    |    2001 |    1334336 |
 +------+----------+------------+---------+------------+
 10 rows in set (0.00 sec)
+........................................................
 
 mysql> rollback to a2;
 Query OK, 0 rows affected (0.00 sec)
@@ -149,6 +152,7 @@ mysql> select * from EMPLOYEE;
 |   44 | alan     | gujarat    |    1998 |     115566 |
 +------+----------+------------+---------+------------+
 9 rows in set (0.00 sec)
+......................................................................
 
 
 
@@ -161,6 +165,7 @@ Query OK, 0 rows affected (0.01 sec)
 
 mysql> create user 'user2'@'localhost' identified by 'user2@amr';
 Query OK, 0 rows affected (0.00 sec)
+............................................................................
 
  1.      GRANT
         ..........
@@ -178,9 +183,25 @@ mysql> show grants;
 | GRANT SELECT, INSERT ON `INVOICE`.`CUSTOMER` TO `user1`@`localhost` |
 +---------------------------------------------------------------------+
 2 rows in set (0.00 sec)
+...................................................................................
 
 ->Give update and delete privilege to user 2 on all tables in the invoice database.
 
+mysql> GRANT DELETE,UPDATE ON INVOICE.* TO 'user2'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
 
-        2.      REVOKE
-                   ->Remove delete privilege of user 2.
+mysql> show grants;
++------------------------------------------------------------+
+| Grants for user2@localhost                                 |
++------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `user2`@`localhost`                  |
+| GRANT UPDATE, DELETE ON `INVOICE`.* TO `user2`@`localhost` |
++------------------------------------------------------------+
+......................................................................................
+2 rows in set (0.00 sec)
+
+2.      REVOKE
+       .........
+
+->Remove delete privilege of user 2.
+

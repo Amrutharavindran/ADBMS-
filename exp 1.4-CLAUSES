@@ -178,12 +178,20 @@ mysql> select NAME  from CUSTOMER where NAME like 'A%';
 
 12. Find the customer names who have ‘e’ or ‘a’ in them.
 
-mysql> select NAME  from CUSTOMER where NAME like '%e%' or '%a%';
-+-------+
-| NAME  |
-+-------+
-| meena |
-+-------+
+mysql> select name from CUSTOMER where NAME like '%e%' or name like '%a%';
++--------+
+| name   |
++--------+
+| Raghav |
+| pranav |
+| priya  |
+| Anitta |
+| meena  |
+| saniya |
+| Nidhal |
++--------+
+7 rows in set (0.00 sec)
+
 ............................................................
 
 13. Find the customer names who have at least 3 characters.

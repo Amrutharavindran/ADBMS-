@@ -85,11 +85,96 @@ mysql> select * from INVOICE_MASTER;
 
 
 7.    List the customer details who not live in ‘Kozhikode’.
+
+mysql> select * from CUSTOMER where CITY!="Kozhikode";
++------+--------+----------------+-----------+------------+
+| C_ID | NAME   | ADDRESS        | CITY      | PH_NO      |
++------+--------+----------------+-----------+------------+
+|  115 | Raghav | pularipadam    | kollam    | 7226296837 |
+|  134 | priya  | chakkalakal    | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL | PALAKKAD  | 9876543211 |
+|  234 | saniya | chakkaraparamb | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas     | Alappuzha | 9878882110 |
++------+--------+----------------+-----------+------------+
+5 rows in set (0.00 sec)
+
+
 8.    List the customers who have no phone number.
+
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  188 | meena  | pularikaav       | kannur    | NULL       |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from CUSTOMER where PH_NO is null;
++------+-------+------------+--------+-------+
+| C_ID | NAME  | ADDRESS    | CITY   | PH_NO |
++------+-------+------------+--------+-------+
+|  188 | meena | pularikaav | kannur | NULL  |
++------+-------+------------+--------+-------+
+1 row in set (0.01 sec)
+
 9.    Display customer names in descending order.
+
+mysql> select NAME from CUSTOMER order by NAME desc;
++--------+
+| NAME   |
++--------+
+| saniya |
+| Raghav |
+| priya  |
+| pranav |
+| Nidhal |
+| meena  |
+| Bindhu |
+| Anitta |
++--------+
+8 rows in set (0.00 sec)
+
+
+
+
+
 10. Display the customer details sorted in ascending by city and descending by names.
+
+mysql> select * from CUSTOMER order by CITY asc,NAME desc;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  188 | meena  | pularikaav       | kannur    | NULL       |
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+
 11. Find the customer names start with ‘A’.
+
+mysql> select NAME  from CUSTOMER where NAME like 'A%';
++--------+
+| NAME   |
++--------+
+| Anitta |
++--------+
+1 row in set (0.00 sec)
+
+
 12. Find the customer names who have ‘e’ or ‘a’ in them.
+
 13. Find the customer names who have at least 3 characters.
 14. List the names of customers their names have ‘r’ in second position.
 15. Find the customer names start with ‘a’ and are at least 3 characters in length.

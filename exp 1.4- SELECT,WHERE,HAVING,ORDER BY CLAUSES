@@ -1,4 +1,6 @@
-1.    List all customer details.
+                                   EXP 1.4
+                                 ***********
+1. List all customer details.
 
 mysql> select * from CUSTOMER;
 +------+--------+------------------+-----------+------------+
@@ -13,9 +15,10 @@ mysql> select * from CUSTOMER;
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 7 rows in set (0.00 sec)
+............................................................................
 
+2. List pname, price of all products.
 
-2.    List pname, price of all products.
 mysql> SELECT P_NAME,PRICE FROM PRODUCT;
 +---------------+-------+
 | P_NAME        | PRICE |
@@ -29,10 +32,10 @@ mysql> SELECT P_NAME,PRICE FROM PRODUCT;
 | Lunch Box     |   408 |
 +---------------+-------+
 7 rows in set (0.00 sec)
+.........................................
 
+3.List all invoice items, avoid duplicates.
 
-
-3.    List all invoice items, avoid duplicates.
 mysql> SELECT DISTINCT INV_ID FROM INVOICE_ITEM;
 +--------+
 | INV_ID |
@@ -42,9 +45,9 @@ mysql> SELECT DISTINCT INV_ID FROM INVOICE_ITEM;
 |    752 |
 +--------+
 3 rows in set (0.00 sec)
+.................................................
 
-
-4. List product price between 50rs and 150rs
+4.List product price between 50rs and 150rs
 
 mysql>  select * from PRODUCT where PRICE between 50 and 150;
 +------+--------+-------+
@@ -53,6 +56,7 @@ mysql>  select * from PRODUCT where PRICE between 50 and 150;
 |  880 | Soap   |    82 |
 +------+--------+-------+
 1 row in set (0.00 sec)
+....................................................................
 
 5. List the customer details who lives in ‘kozhikode’,’Alappuzha’.
 
@@ -66,6 +70,7 @@ mysql> select * from CUSTOMER where CITY="kozhikode" or city="Alappuzha";
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 4 rows in set (0.00 sec)
+..........................................................................
 
 6. List the invoice details from 1st January 2023 to 15th February 2023
 
@@ -81,8 +86,7 @@ mysql> select * from INVOICE_MASTER;
 |    752 |     543 | 2022-11-12 |
 +--------+---------+------------+
 6 rows in set (0.00 sec)
-
-
+..........................................................
 
 7.    List the customer details who not live in ‘Kozhikode’.
 
@@ -97,9 +101,9 @@ mysql> select * from CUSTOMER where CITY!="Kozhikode";
 |  543 | Bindhu | manavvilas     | Alappuzha | 9878882110 |
 +------+--------+----------------+-----------+------------+
 5 rows in set (0.00 sec)
+.......................................................................
 
-
-8.    List the customers who have no phone number.
+8. List the customers who have no phone number.
 
 mysql> select * from CUSTOMER;
 +------+--------+------------------+-----------+------------+
@@ -115,7 +119,7 @@ mysql> select * from CUSTOMER;
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 8 rows in set (0.00 sec)
-
+.................................................................
 mysql> select * from CUSTOMER where PH_NO is null;
 +------+-------+------------+--------+-------+
 | C_ID | NAME  | ADDRESS    | CITY   | PH_NO |
@@ -123,8 +127,9 @@ mysql> select * from CUSTOMER where PH_NO is null;
 |  188 | meena | pularikaav | kannur | NULL  |
 +------+-------+------------+--------+-------+
 1 row in set (0.01 sec)
+........................................................
 
-9.    Display customer names in descending order.
+9.Display customer names in descending order.
 
 mysql> select NAME from CUSTOMER order by NAME desc;
 +--------+
@@ -140,10 +145,7 @@ mysql> select NAME from CUSTOMER order by NAME desc;
 | Anitta |
 +--------+
 8 rows in set (0.00 sec)
-
-
-
-
+........................................................
 
 10. Display the customer details sorted in ascending by city and descending by names.
 
@@ -161,6 +163,7 @@ mysql> select * from CUSTOMER order by CITY asc,NAME desc;
 |  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
 +------+--------+------------------+-----------+------------+
 8 rows in set (0.00 sec)
+................................................................
 
 11. Find the customer names start with ‘A’.
 
@@ -171,11 +174,58 @@ mysql> select NAME  from CUSTOMER where NAME like 'A%';
 | Anitta |
 +--------+
 1 row in set (0.00 sec)
-
+........................................................................
 
 12. Find the customer names who have ‘e’ or ‘a’ in them.
 
+mysql> select NAME  from CUSTOMER where NAME like '%e%' or '%a%';
++-------+
+| NAME  |
++-------+
+| meena |
++-------+
+............................................................
+
 13. Find the customer names who have at least 3 characters.
+
+mysql> select NAME from CUSTOMER where name like '__%';
++--------+
+| NAME   |
++--------+
+| Raghav |
+| pranav |
+| priya  |
+| Anitta |
+| meena  |
+| saniya |
+| Bindhu |
+| Nidhal |
++--------+
+8 rows in set (0.00 sec)
+.......................................................................
+
 14. List the names of customers their names have ‘r’ in second position.
+
+mysql> select NAME from CUSTOMER where NAME like '_r%';
++--------+
+| NAME   |
++--------+
+| pranav |
+| priya  |
++--------+
+2 rows in set (0.00 sec)
+.............................................................................
+
 15. Find the customer names start with ‘a’ and are at least 3 characters in length.
+
+mysql> select NAME from CUSTOMER where name like 'A__%';
++--------+
+| NAME   |
++--------+
+| Anitta |
++--------+
+1 row in set (0.00 sec)
+................................................................................
+
+
 

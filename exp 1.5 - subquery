@@ -103,8 +103,29 @@ re quantity>10);
 
 4. Find the product that has no sale.
 
+mysql> select * from PRODUCT where P_ID not in(select PID from INVOICE_ITEM);
++------+--------+-------+
+| P_ID | P_NAME | PRICE |
++------+--------+-------+
+|  117 | Book   |   184 |
+|  230 | Bottle |   255 |
+|  786 | Snacks |   551 |
++------+--------+-------+
+3 rows in set (0.01 sec)
+................................................................................
 
-5.    List the customer names who purchased the items ‘pen’ and ‘pencil’
+5.List the customer names who purchased the items ‘soap’ and ‘lunch box’
+
+mysql> select NAME from CUSTOMER where C_ID in (select CUST_ID from INVOICE_MASTER where INV_ID in (select INV_ID from INVOICE_ITEM where PID in (select P_ID from PRODUCT where P_NAME="Soap" or P_NAME="Lunch Box")));
++--------+
+| NAME   |
++--------+
+| saniya |
+| Bindhu |
++--------+
+2 rows in set (0.00 sec)
+................................................................................
+
 .
 6.    Display the purchased product details of the customer ’xyz’.
 

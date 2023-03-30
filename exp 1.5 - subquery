@@ -1,13 +1,108 @@
           1.5  ACCESSING DATABASE: (SUBQUERY)
           ************************************
+          
+mysql> select * from CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  188 | meena  | pularikaav       | kannur    | NULL       |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+...............................................................
 
-1.    Listthe customer names of invoice date 3rd February 2023.
+mysql> select * from PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   184 |
+|  222 | Floor cleaner |   326 |
+|  230 | Bottle        |   255 |
+|  457 | Bag           |  1020 |
+|  786 | Snacks        |   551 |
+|  880 | Soap          |    82 |
+|  986 | Lunch Box     |   408 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
+.............................................
 
-2.    List the product name and price of each invoice item.
+mysql> select * from INVOICE_MASTER;
++--------+---------+------------+
+| INV_ID | CUST_ID | INV_DATE   |
++--------+---------+------------+
+|      1 |     121 | 2023-03-13 |
+|     42 |     115 | 2023-06-18 |
+|    100 |     115 | 2023-05-29 |
+|    190 |     234 | 2022-03-20 |
+|    300 |     767 | 2023-01-19 |
+|    752 |     543 | 2022-11-12 |
++--------+---------+------------+
+6 rows in set (0.00 sec)
+........................................
 
-3.    List the product names, only include their purchased quantity more than 3.
+mysql> SELECT * FROM  INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+........................................................
 
-4.    Find the product that has no sale.
+
+1.    Listthe customer names of invoice date 12th  november 2022.
+
+mysql> select name  from CUSTOMER where C_ID in(select CUST_ID from INVOICE_MASTER where INV_DATE="2022-11-12");
+
++--------+
+| name   |
++--------+
+| Bindhu |
++--------+
+1 row in set (0.00 sec)
+............................................................................................................
+
+2. List the product name and price of each invoice item.
+
+mysql> select P_NAME,PRICE from  PRODUCT where P_ID in(select PID from INVOICE_ITEM);
+
++---------------+-------+
+| P_NAME        | PRICE |
++---------------+-------+
+| Floor cleaner |   326 |
+| Bag           |  1020 |
+| Soap          |    82 |
+| Lunch Box     |   408 |
++---------------+-------+
+4 rows in set (0.01 sec)
+..............................................................................................................
+
+3.List the product names, only include their purchased quantity more than 10.
+
+mysql> select P_NAME from PRODUCT where P_ID in(select PID from INVOICE_ITEM whe
+re quantity>10);
+
++---------------+
+| P_NAME        |
++---------------+
+| Floor cleaner |
+| Bag           |
++---------------+
+2 rows in set (0.00 sec)
+.............................................................................
+
+4. Find the product that has no sale.
+
 
 5.    List the customer names who purchased the items ‘pen’ and ‘pencil’
 .

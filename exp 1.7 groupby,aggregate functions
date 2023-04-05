@@ -60,7 +60,7 @@ mysql> select count(*),CITY from CUSTOMER group by CITY;
 6 rows in set (0.00 sec)
 .......................................................................................
 
-4.Find number of customers in each city, only include city with more than  2 customers.
+4.Find number of customers in each city, only include city with more than   1 customers.
 
 mysql> select count(*),CITY from CUSTOMER group by CITY having count(*)>1;
 +----------+-----------+

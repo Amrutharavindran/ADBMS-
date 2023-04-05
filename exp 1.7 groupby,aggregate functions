@@ -35,6 +35,57 @@ mysql> select P_NAME,PRICE from PRODUCT where P_NAME!='Soap' order by PRICE asc;
 
 2.Find minimum, maximum and average price of products.
 
+mysql> select min(PRICE),max(PRICE),avg(PRICE) from PRODUCT;
++------------+------------+------------+
+| min(PRICE) | max(PRICE) | avg(PRICE) |
++------------+------------+------------+
+|         82 |       1020 |   403.7143 |
++------------+------------+------------+
+1 row in set (0.00 sec)
+...................................................................
+
 3.Find number of customers in each city.
-4.Find number of customers in each city, only include city with more than 3 customers.
+
+mysql> select count(*),CITY from CUSTOMER group by CITY;
++----------+-----------+
+| count(*) | CITY      |
++----------+-----------+
+|        1 | kollam    |
+|        2 | kozhikode |
+|        1 | kottayam  |
+|        1 | PALAKKAD  |
+|        1 | kannur    |
+|        2 | Alappuzha |
++----------+-----------+
+6 rows in set (0.00 sec)
+.......................................................................................
+
+4.Find number of customers in each city, only include city with more than  2 customers.
+
+mysql> select count(*),CITY from CUSTOMER group by CITY having count(*)>1;
++----------+-----------+
+| count(*) | CITY      |
++----------+-----------+
+|        2 | kozhikode |
+|        2 | Alappuzha |
++----------+-----------+
+2 rows in set (0.00 sec)
+....................................................................................
+
 5. Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
+
+mysql>  select concat(NAME, " lives in ",CITY) as C_ID from CUSTOMER;
++---------------------------+
+| C_ID                      |
++---------------------------+
+| Raghav lives in kollam    |
+| pranav lives in kozhikode |
+| priya lives in kottayam   |
+| Anitta lives in PALAKKAD  |
+| meena lives in kannur     |
+| saniya lives in Alappuzha |
+| Bindhu lives in Alappuzha |
+| Nidhal lives in Kozhikode |
++---------------------------+
+8 rows in set (0.00 sec)
+...................................................................................................

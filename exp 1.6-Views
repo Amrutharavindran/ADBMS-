@@ -1,2 +1,43 @@
+
+                               EXP-1.6 
+                               ********
+                    ACCESSING DATABASES (VIEWS)
+                    *****************************
+
 1. Create a view for customers who have purchased products.
-2. Create a view for invoice products[cust_name, , inv_id, product_id, quantity]
+
+mysql> create view cust1 as select * from CUSTOMER where C_ID in(select CUST_ID
+from INVOICE_MASTER);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from cust1;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+5 rows in set (0.00 sec)
+..................................................................................................................................................
+
+2. Create a view for invoice products[cust_name,  inv_id, product_id, quantity]
+
+mysql>  create view inv_product as select CUSTOMER.NAME,INVOICE_MASTER.INV_ID,PRODUCT.P_ID,INVOICE_ITEM.QUANTITY from CUSTOMER inner join INVOICE_MASTER on CUSTOMER.C_ID=INVOICE_MASTER.CUST_ID inner join INVOICE_ITEM on INVOICE_MASTER.INV_ID=INVOICE_ITEM.INV_ID inner join PRODUCT on
+PRODUCT.P_ID=INVOICE_ITEM.PID;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from inv_product;
++--------+--------+------+----------+
+| NAME   | INV_ID | P_ID | QUANTITY |
++--------+--------+------+----------+
+| Raghav |    100 |  222 |       22 |
+| Raghav |    100 |  457 |       22 |
+| saniya |    190 |  986 |       10 |
+| saniya |    190 |  880 |       10 |
+| Bindhu |    752 |  880 |       10 |
++--------+--------+------+----------+
+5 rows in set (0.00 sec)
+........................................................................................................................................

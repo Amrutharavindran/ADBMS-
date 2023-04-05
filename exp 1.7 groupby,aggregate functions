@@ -60,7 +60,7 @@ mysql> select count(*),CITY from CUSTOMER group by CITY;
 6 rows in set (0.00 sec)
 .......................................................................................
 
-4.Find number of customers in each city, only include city with more than   1 customers.
+4.Find number of customers in each city, only include city with more than   1 customers. 
 
 mysql> select count(*),CITY from CUSTOMER group by CITY having count(*)>1;
 +----------+-----------+
@@ -89,3 +89,4 @@ mysql>  select concat(NAME, " lives in ",CITY) as C_ID from CUSTOMER;
 +---------------------------+
 8 rows in set (0.00 sec)
 ....................................................................................................
+//VERIFIED

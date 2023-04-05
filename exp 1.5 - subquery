@@ -167,3 +167,4 @@ mysql> select distinct NAME from CUSTOMER where C_ID in (select CUST_ID from INV
 
 //WRONG QUERY
 
+//RESUBMIT

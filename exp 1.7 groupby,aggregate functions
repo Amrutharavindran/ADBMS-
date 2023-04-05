@@ -5,7 +5,36 @@
     ***********************************************************
 
 1.List product name, price except soap on price order.
+mysql> SELECT * FROM PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   184 |
+|  222 | Floor cleaner |   326 |
+|  230 | Bottle        |   255 |
+|  457 | Bag           |  1020 |
+|  786 | Snacks        |   551 |
+|  880 | Soap          |    82 |
+|  986 | Lunch Box     |   408 |
++------+---------------+-------+
+7 rows in set (0.01 sec)
+
+mysql> select P_NAME,PRICE from PRODUCT where P_NAME!='Soap' order by PRICE asc; 
++---------------+-------+
+| P_NAME        | PRICE |
++---------------+-------+
+| Book          |   184 |
+| Bottle        |   255 |
+| Floor cleaner |   326 |
+| Lunch Box     |   408 |
+| Snacks        |   551 |
+| Bag           |  1020 |
++---------------+-------+
+6 rows in set (0.00 sec)
+..............................................................................................................
+
 2.Find minimum, maximum and average price of products.
+
 3.Find number of customers in each city.
 4.Find number of customers in each city, only include city with more than 3 customers.
 5. Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.

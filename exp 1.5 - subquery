@@ -156,7 +156,7 @@ mysql> SELECT * FROM INVOICE_ITEM;
 +--------+------+----------+
 8 rows in set (0.00 sec)
 
-mysql> select distinct NAME from CUSTOMER where C_ID in (select CUST_ID from INVOICE_MASTER where INV_ID in (select INV_ID from INVOICE_ITEM group by INV_ID having count(*)>2));
+mysql> select distinct NAME from CUSTOMER where C_ID in (select CUST_ID from INVOICE_MASTER where INV_ID in (select INV_ID from INVOICE_ITEM group by INV_ID having count(*)>2)); //WRONG QUERY
 +--------+
 | NAME   |
 +--------+
@@ -165,5 +165,5 @@ mysql> select distinct NAME from CUSTOMER where C_ID in (select CUST_ID from INV
 1 row in set (0.00 sec)
 ......................................................................................................................................................................
 
-
+//WRONG QUERY
 

@@ -3,11 +3,81 @@
                                  
              OPTIMIZING DATABASE: (Using Set, arithmetic, logical and special operators)
              ****************************************************************************
+             
+ mysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
+|    100 |  986 |        2 |
+|    300 |  457 |        3 |
+|    752 |  222 |        2 |
++--------+------+----------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+---------+------------+
+| INV_ID | CUST_ID | INV_DATE   |
++--------+---------+------------+
+|      1 |     121 | 2023-03-13 |
+|     42 |     115 | 2023-06-18 |
+|    100 |     115 | 2023-05-29 |
+|    190 |     234 | 2022-03-20 |
+|    300 |     767 | 2023-01-19 |
+|    752 |     543 | 2022-11-12 |
++--------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT *FROM PRODUCT;
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   184 |
+|  222 | Floor cleaner |   326 |
+|  230 | Bottle        |   255 |
+|  457 | Bag           |  1020 |
+|  786 | Snacks        |   551 |
+|  880 | Soap          |    82 |
+|  986 | Lunch Box     |   408 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  188 | meena  | pularikaav       | kannur    | NULL       |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+....................................................................................................
           
-1.      Display customer_id, city  who lives either in ‘CLT’ or in ‘TVM’
+1.Display customer_id, city  who lives either in ‘Kozhikode’ or in ‘Alappuzha’
 
-2.      Display product details with an updated price amount(new price= old price+5rs)
+mysql> SELECT C_ID,CITY  FROM CUSTOMER  WHERE CITY="Kozhikode" OR city="Alappuzha";
++------+-----------+
+| C_ID | CITY      |
++------+-----------+
+|  121 | kozhikode |
+|  234 | Alappuzha |
+|  543 | Alappuzha |
+|  767 | Kozhikode |
++------+-----------+
+4 rows in set (0.00 sec)
 
-3.      Display customer details who doesn’t have phone number and lives in ‘Calicut’ city (use logical operators)
+2. Display product details with an updated price amount(new price= old price+5rs)
 
-4.      List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+
+3.Display customer details who doesn’t have phone number and lives in ‘Calicut’ city (use logical operators)
+
+4. List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)

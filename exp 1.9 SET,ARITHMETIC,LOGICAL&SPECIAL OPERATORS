@@ -74,10 +74,66 @@ mysql> SELECT C_ID,CITY  FROM CUSTOMER  WHERE CITY="Kozhikode" OR city="Alappuzh
 |  767 | Kozhikode |
 +------+-----------+
 4 rows in set (0.00 sec)
+.............................................................................................................................................
 
-2. Display product details with an updated price amount(new price= old price+5rs)
+2.Display product details with an updated price amount(new price= old price+5rs)
 
+mysql> SELECT *FROM PRODUCT;
 
-3.Display customer details who doesn’t have phone number and lives in ‘Calicut’ city (use logical operators)
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   184 |
+|  222 | Floor cleaner |   326 |
+|  230 | Bottle        |   255 |
+|  457 | Bag           |  1020 |
+|  786 | Snacks        |   551 |
+|  880 | Soap          |    82 |
+|  986 | Lunch Box     |   408 |
++------+---------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> update PRODUCT set PRICE=PRICE+5;
+
+Query OK, 7 rows affected (0.01 sec)
+Rows matched: 7  Changed: 7  Warnings: 0
+
+mysql> select * from PRODUCT;
+
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   189 |
+|  222 | Floor cleaner |   331 |
+|  230 | Bottle        |   260 |
+|  457 | Bag           |  1025 |
+|  786 | Snacks        |   556 |
+|  880 | Soap          |    87 |
+|  986 | Lunch Box     |   413 |
++------+---------------+-------+
+7 rows in set (0.01 sec)
+..................................................................................................................
+
+3.Display customer details who doesn’t have phone number and lives in ‘Kannur’ city (use logical operators)
+
+mysql>  select *from CUSTOMER where PH_NO is null and CITY="kannur";
+
++------+-------+------------+--------+-------+
+| C_ID | NAME  | ADDRESS    | CITY   | PH_NO |
++------+-------+------------+--------+-------+
+|  188 | meena | pularikaav | kannur | NULL  |
++------+-------+------------+--------+-------+
+1 row in set (0.00 sec)
+............................................................................................................................................
 
 4. List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+
+mysql> select P_NAME from PRODUCT  where P_ID in(select PID from INVOICE_ITEM where QUANTITY=3);
+
++--------+
+| P_NAME |
++--------+
+| Bag    |
++--------+
+1 row in set (0.00 sec)
+....................................................................................................................................................

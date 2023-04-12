@@ -137,3 +137,4 @@ mysql> select P_NAME from PRODUCT  where P_ID in(select PID from INVOICE_ITEM wh
 +--------+
 1 row in set (0.00 sec)
 ....................................................................................................................................................
+//VERIFIED

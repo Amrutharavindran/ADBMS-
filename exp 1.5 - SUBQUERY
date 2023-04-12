@@ -168,3 +168,4 @@ select distinct NAME from CUSTOMER where C_ID in (select CUST_ID from INVOICE_MA
 
 
 ///RESUBMIT
+//VERIFIED

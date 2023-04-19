@@ -1,0 +1,59 @@
+                                      EXPERIMENT NO: 2.1
+                                      ******************
+                               PL/SQL PROGRAMS- STORED PROCEDURES 
+                               **********************************
+
+1.Create a procedure to display all tables in the invoice database.
+
+mysql> delimiter //
+mysql> create procedure inv_data()
+    -> select * from CUSTOMER;
+    -> select * from INVOICE_ITEM;
+    -> select * from INVOICE_MASTER;
+    -> select * from PRODUCT;
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|    100 |  222 |       22 |
+|    100 |  457 |       22 |
+|    190 |  986 |       10 |
+|    190 |  880 |       10 |
+|    752 |  880 |       10 |
+|    100 |  986 |        2 |
+|    300 |  457 |        3 |
+|    752 |  222 |        2 |
++--------+------+----------+
+8 rows in set (0.01 sec)
+
++--------+---------+------------+
+| INV_ID | CUST_ID | INV_DATE   |
++--------+---------+------------+
+|      1 |     121 | 2023-03-13 |
+|     42 |     115 | 2023-06-18 |
+|    100 |     115 | 2023-05-29 |
+|    190 |     234 | 2022-03-20 |
+|    300 |     767 | 2023-01-19 |
+|    752 |     543 | 2022-11-12 |
++--------+---------+------------+
+6 rows in set (0.01 sec)
+
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   189 |
+|  222 | Floor cleaner |   331 |
+|  230 | Bottle        |   260 |
+|  457 | Bag           |  1025 |
+|  786 | Snacks        |   556 |
+|  880 | Soap          |    87 |
+|  986 | Lunch Box     |   413 |
++------+---------------+-------+
+7 rows in set (0.01 sec)
+..........................................................................................................................
+
+2.Create a procedure to find greatest of 3 number
+
+3. Create a procedure to display invoice details of a particular customer.

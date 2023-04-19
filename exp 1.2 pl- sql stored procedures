@@ -76,5 +76,31 @@ Query OK, 0 rows affected (0.01 sec)
 
 
 2. Create a procedure to find greatest of 3 numbers.
+mysql> create procedure greatest(a int,b int,c int)
+    -> begin
+    -> if(a>b) and (a>c) then
+    -> select a as 'Greatest';
+    -> elseif(b>a) and (b>c) then
+    -> select b as 'Greatest';
+    -> else
+    -> select c as 'Greatest';
+    -> end if;
+    -> end
+    ->  //
+Query OK, 0 rows affected (0.01 sec)
 
-3.      Create a procedure to display invoice details of a particular customer.
+mysql> call greatest(25,56,-97)
+    ->  //
++----------+
+| Greatest |
++----------+
+|       56 |
++----------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+
+
+
+3.  Create a procedure to display invoice details of a particular customer.

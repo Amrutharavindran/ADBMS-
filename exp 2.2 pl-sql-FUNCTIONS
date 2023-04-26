@@ -4,4 +4,41 @@
                              ***************************8
 
 
-1.       Create a function to calculate price_range(low, medium, high) of each product. If price<=5 indicate as low, upto 50 indicate as medium, and above as high.
+1.Create a function to calculate price_range(low, medium, high) of each product. If price<=5 indicate as low, upto 50 indicate as medium, and above as high.
+
+mysql> delimiter //
+mysql> create function price_range(price int)
+    -> returns varchar(20)
+    -> deterministic
+    -> begin
+    -> declare price_range varchar(20);
+    -> if(PRICE <=100) then
+    -> set price_range='low';
+    -> else if(PRICE > 100)and(PRICE <= 300)then
+    -> set price_range='medium';
+    -> else
+    -> set price_range='high';
+    -> end if;
+    -> end if;
+    -> return(price_range);
+    -> end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select P_NAME,PRICE,price_range(price) from PRODUCT order by PRICE;
+    ->  //
++---------------+-------+--------------------+
+| P_NAME        | PRICE | price_range(price) |
++---------------+-------+--------------------+
+| Soap          |    87 | low                |
+| Book          |   189 | medium             |
+| Bottle        |   260 | medium             |
+| Floor cleaner |   331 | high               |
+| Lunch Box     |   413 | high               |
+| Snacks        |   556 | high               |
+| Bag           |  1025 | high               |
++---------------+-------+--------------------+
+7 rows in set (0.00 sec)
+.....................................................................................................................................................
+
+
+

@@ -4,7 +4,7 @@
                              ***************************8
 
 
-1.Create a function to calculate price_range(low, medium, high) of each product. If price<=5 indicate as low, upto 50 indicate as medium, and above as high.
+1.Create a function to calculate price_range(low, medium, high) of each product. If price<=100 indicate as low, upto 300 indicate as medium, and above as high.
 
 mysql> delimiter //
 mysql> create function price_range(price int)

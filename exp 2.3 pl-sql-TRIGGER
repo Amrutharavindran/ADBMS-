@@ -5,4 +5,63 @@
 
 1. Create a trigger to handle updates to the customer table.
 
+mysql> create table customer_1(id int,name varchar(15),address varchar(15),city
+varchar(25),phno bigint); //
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> delimiter //
+mysql> create trigger updateS
+    -> before update
+    -> on CUSTOMER for each row
+    -> begin
+    -> insert into customer_1
+    ->  values(old.C_ID,old.NAME,old.ADDRESS,old.CITY,old.PH_NO);
+    ->  end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select *from CUSTOMER; //
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  188 | meena  | pularikaav       | kannur    | NULL       |
+|  234 | saniya | chakkaraparamb   | Alappuzha | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.01 sec)
+
+mysql> update CUSTOMER set CITY='calicut' where C_ID=234;
+    ->  //
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer_1; //
++------+--------+----------------+-----------+------------+
+| id   | name   | address        | city      | phno       |
++------+--------+----------------+-----------+------------+
+|  234 | saniya | chakkaraparamb | Alappuzha | 9876432110 |
++------+--------+----------------+-----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from CUSTOMER; //
++------+--------+------------------+-----------+------------+
+| C_ID | NAME   | ADDRESS          | CITY      | PH_NO      |
++------+--------+------------------+-----------+------------+
+|  115 | Raghav | pularipadam      | kollam    | 7226296837 |
+|  121 | pranav | manmapplii house | kozhikode | 9845127890 |
+|  134 | priya  | chakkalakal      | kottayam  | 9845137890 |
+|  145 | Anitta | THEKKEPULLIYAL   | PALAKKAD  | 9876543211 |
+|  188 | meena  | pularikaav       | kannur    | NULL       |
+|  234 | saniya | chakkaraparamb   | calicut   | 9876432110 |
+|  543 | Bindhu | manavvilas       | Alappuzha | 9878882110 |
+|  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
++------+--------+------------------+-----------+------------+
+8 rows in set (0.00 sec)
+
+
+
 2. Create a trigger to handle inserts to the product relation ( if price < 5 the set price to 10).

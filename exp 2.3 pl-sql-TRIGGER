@@ -61,7 +61,42 @@ mysql> select * from CUSTOMER; //
 |  767 | Nidhal | razakhouse       | Kozhikode | 8756431290 |
 +------+--------+------------------+-----------+------------+
 8 rows in set (0.00 sec)
-
-
+..........................................................................................................................
 
 2. Create a trigger to handle inserts to the product relation ( if price < 5 the set price to 10).
+
+mysql> delimiter //
+
+mysql> create trigger products_price
+    -> before insert
+    -> on PRODUCT
+    -> for each row
+    -> begin
+    -> if new.PRICE<5 then
+    -> set new.PRICE=10;
+    -> end if;
+    -> end //
+    
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into PRODUCT values(412,'pencil',4);
+    ->  //
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from PRODUCT;
+    ->  //
++------+---------------+-------+
+| P_ID | P_NAME        | PRICE |
++------+---------------+-------+
+|  117 | Book          |   189 |
+|  222 | Floor cleaner |   331 |
+|  230 | Bottle        |   260 |
+|  412 | pencil        |    10 |
+|  457 | Bag           |  1025 |
+|  786 | Snacks        |   556 |
+|  880 | Soap          |    87 |
+|  986 | Lunch Box     |   413 |
++------+---------------+-------+
+8 rows in set (0.00 sec)
+.................................................................................................................................
+

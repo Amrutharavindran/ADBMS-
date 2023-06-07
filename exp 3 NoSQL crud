@@ -1,0 +1,71 @@
+Assignment 3: NoSQL-CRUD
+RESMI S R
+•
+Jun 3
+100 points
+1.      Write a MongoDB query to create an INVOICE database and collections (CUSTOMER, PRODUCT) and its corresponding documents.
+
+test> use INVOICE
+switched to db INVOICE
+
+INVOICE> db.createCollection("customer")
+{ ok: 1 }
+INVOICE> db.createCollection("product")
+{ ok: 1 }
+
+
+INVOICE> db.customer.insertMany([{
+... c_id:"115",
+... name:"raghav",
+... ddress:"pularipadam",
+... city:"kollam",
+... ph_no:"7652892341"
+... },
+... {
+... c_id:"121",
+... name:"pranav",
+... address:"manpilli",
+... city:"calicut",
+... ph_no:"986543211"
+},
+{
+... c_id:"134",
+... name:"priya",
+... address:"chakkalakal",
+... city:"kottayam",
+... ph_no:"754321979"
+... },
+... {
+... c_id:"145",
+... name:"anitta",
+... address:"kizhakketheruv",
+... city:"kannur",
+... ph_no:"9387503967"
+...  },
+... {
+... c_id:"234",
+... name:"saniya",
+... address:"rose garden",
+... city:"palakkad",
+... ph_no:"8756431290"}
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("64805205848b43b303af1f4d"),
+    '1': ObjectId("64805205848b43b303af1f4e"),
+    '2': ObjectId("64805205848b43b303af1f4f"),
+    '3':ObjectId("64805205848b43b303af1f4g"),
+    '4':ObjectId("64805205848b43b303af1f4h"),
+  }
+}
+
+
+
+
+
+2.      Write a MongoDB query to find all documents from the collection CUSTOMER
+
+3.      Write a MongoDB query to update the city in the collection CUSTOMER.
+
+4.      Write a MongoDB query to delete the first matched document whose city is “Calicut”.

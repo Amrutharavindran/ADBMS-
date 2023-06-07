@@ -10,7 +10,7 @@ switched to db INVOICE
 
 INVOICE> db.createCollection("customer")
 { ok: 1 }
-INVOICE> db.createCollection("product")
+INVOICE> db.createCollection("products")
 { ok: 1 }
 
 

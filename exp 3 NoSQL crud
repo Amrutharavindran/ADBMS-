@@ -44,6 +44,72 @@ INVOICE> db.products.insertMany([{ p_id:"117",p_name:"book",price:"180"},{p_id:"
 
 2.      Write a MongoDB query to find all documents from the collection CUSTOMER
 
+INVOICE> db.customer.find()
+[
+  {
+    _id: ObjectId("64805013848b43b303af1f4b"),
+    c_id: '115',
+    name: 'raghav',
+    ddress: 'pularipadam',
+    city: 'kollam',
+    ph_no: '7652892341'
+  },
+  {
+    _id: ObjectId("64805013848b43b303af1f4c"),
+    c_id: '121',
+    name: 'pranav',
+    address: 'manpilli',
+    city: 'calicut',
+    ph_no: '986543211'
+  },
+  {
+    _id: ObjectId("64805205848b43b303af1f4d"),
+    c_id: '134',
+    name: 'priya',
+    address: 'chakkalakal',
+    city: 'kottayam',
+    ph_no: '754321979'
+  },
+  {
+    _id: ObjectId("64805205848b43b303af1f4e"),
+    c_id: '145',
+    name: 'anitta',
+    address: 'kizhakketheruv',
+    city: 'kannur',
+    ph_no: '9387503967'
+  },
+  {
+    _id: ObjectId("64805205848b43b303af1f4f"),
+    c_id: '234',
+    name: 'saniya',
+    address: 'rose garden',
+    city: 'palakkad',
+    ph_no: '8756431290'
+  }
+]
+
+
 3.      Write a MongoDB query to update the city in the collection CUSTOMER.
+
+INVOICE> db.customer.update({'city':'kottayam'},{$set:{'city':'Ernakulam'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+INVOICE> db.customer.find({name:"priya"}).pretty()
+[
+  {
+    _id: ObjectId("64805205848b43b303af1f4d"),
+    c_id: '134',
+    name: 'priya',
+    address: 'chakkalakal',
+    city: 'Ernakulam',
+    ph_no: '754321979'
+  }
+]
 
 4.      Write a MongoDB query to delete the first matched document whose city is “Calicut”.

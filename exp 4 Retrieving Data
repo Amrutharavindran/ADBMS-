@@ -98,5 +98,78 @@ INVOICE> db.customer.find({$or:[{"city":"Trivandrum"},{"city":"ernakulam"}]}).pr
 
 2. Write a MongoDB query to display all customer documents who have age >50.
 
-3. Write a MongoDB query to find customer documents who not live in ‘tvm’.
+INVOICE> db.customer.find({age:{$gt:"50"}}).pretty()
+[
+  {
+    _id: ObjectId("64805013848b43b303af1f4b"),
+    c_id: '115',
+    name: 'raghav',
+    ddress: 'pularipadam',
+    city: 'kollam',
+    ph_no: '7652892341',
+    age: '60'
+  },
+  {
+    _id: ObjectId("6482c85e28acc98686cda717"),
+    c_id: '550',
+    name: 'midhun',
+    address: 'mavelikara',
+    city: 'Trivandrum',
+    ph_no: '7652891191',
+    age: '55'
+  }
+]
+
+3. Write a MongoDB query to find customer documents who not live in ‘Trivandrum’.
+
+INVOICE> db.customer.find({city:{$ne:"Trivandrum"}}).pretty()
+[
+  {
+    _id: ObjectId("64805013848b43b303af1f4b"),
+    c_id: '115',
+    name: 'raghav',
+    ddress: 'pularipadam',
+    city: 'kollam',
+    ph_no: '7652892341',
+    age: '60'
+  },
+  {
+    _id: ObjectId("64805205848b43b303af1f4d"),
+    c_id: '134',
+    name: 'priya',
+    address: 'chakkalakal',
+    city: 'ernakulam',
+    ph_no: '754321979',
+    age: '40'
+  },
+  {
+    _id: ObjectId("64805205848b43b303af1f4e"),
+    c_id: '145',
+    name: 'anitta',
+    address: 'kizhakketheruv',
+    city: 'kannur',
+    ph_no: '9387503967',
+    age: '50'
+  },
+  {
+    _id: ObjectId("64805205848b43b303af1f4f"),
+    c_id: '234',
+    name: 'saniya',
+    address: 'rose garden',
+    city: 'palakkad',
+    ph_no: '8756431290',
+    age: '25'
+  },
+  {
+    _id: ObjectId("6482c85e28acc98686cda718"),
+    c_id: '877',
+    name: 'krithi',
+    address: 'chemmannur',
+    city: 'ernakulam',
+    ph_no: '9833143211',
+    age: '18'
+  }
+]
+
+
 

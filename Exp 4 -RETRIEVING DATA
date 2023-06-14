@@ -172,4 +172,4 @@ INVOICE> db.customer.find({city:{$ne:"Trivandrum"}}).pretty()
 ]
 
 
-
+//VERIFIED

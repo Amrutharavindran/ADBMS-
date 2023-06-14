@@ -10,7 +10,7 @@ INVOICE> db.customer.find()
     _id: ObjectId("64805013848b43b303af1f4b"),
     c_id: '115',
     name: 'raghav',
-    ddress: 'pularipadam',
+    address: 'pularipadam',
     city: 'kollam',
     ph_no: '7652892341',
     age: '60'

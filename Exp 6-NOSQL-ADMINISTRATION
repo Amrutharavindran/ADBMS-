@@ -16,9 +16,60 @@ Using Mongosh:		1.9.1
 
 For mongosh info see: https://docs.mongodb.com/mongodb-shell/
 
-------
+-------
+================================================================================================================================================================
 
 2. Write a MongoDB query to create the backup for the INVOICE database.
 
+ksb@ksb-H410M-S2-V2:~$ mongodump --db INVOICE
+2023-06-15T15:22:37.799+0530	writing INVOICE.product to dump/INVOICE/product.bson
+2023-06-15T15:22:37.799+0530	writing INVOICE.products to dump/INVOICE/products.bson
+2023-06-15T15:22:37.800+0530	done dumping INVOICE.product (0 documents)
+2023-06-15T15:22:37.801+0530	done dumping INVOICE.products (6 documents)
+2023-06-15T15:22:37.801+0530	writing INVOICE.customer to dump/INVOICE/customer.bson
+2023-06-15T15:22:37.802+0530	done dumping INVOICE.customer (7 documents)
+
+==================================================================================================================================================================
 
 3.Write a MongoDB query to restore a particular database or a collection.
+
+test> use INVOICE
+switched to db INVOICE
+INVOICE> db.dropDatabase()
+{ ok: 1, dropped: 'INVOICE' }
+
+INVOICE> show dbs
+admin   180.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+test    112.00 KiB
+==================================================================================================================================================================
+ksb@ksb-H410M-S2-V2:~$ mongorestore --db INVOICE dump/INVOICE
+2023-06-15T15:28:22.943+0530	The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2023-06-15T15:28:22.943+0530	building a list of collections to restore from dump/INVOICE dir
+2023-06-15T15:28:22.944+0530	reading metadata for INVOICE.customer from dump/INVOICE/customer.metadata.json
+2023-06-15T15:28:22.944+0530	reading metadata for INVOICE.product from dump/INVOICE/product.metadata.json
+2023-06-15T15:28:22.944+0530	reading metadata for INVOICE.products from dump/INVOICE/products.metadata.json
+2023-06-15T15:28:22.953+0530	restoring INVOICE.customer from dump/INVOICE/customer.bson
+2023-06-15T15:28:22.955+0530	restoring INVOICE.products from dump/INVOICE/products.bson
+2023-06-15T15:28:22.958+0530	restoring INVOICE.product from dump/INVOICE/product.bson
+2023-06-15T15:28:22.965+0530	finished restoring INVOICE.customer (7 documents, 0 failures)
+2023-06-15T15:28:22.966+0530	finished restoring INVOICE.products (6 documents, 0 failures)
+2023-06-15T15:28:22.968+0530	finished restoring INVOICE.product (0 documents, 0 failures)
+2023-06-15T15:28:22.968+0530	no indexes to restore for collection INVOICE.customer
+2023-06-15T15:28:22.968+0530	no indexes to restore for collection INVOICE.product
+2023-06-15T15:28:22.968+0530	no indexes to restore for collection INVOICE.products
+2023-06-15T15:28:22.968+0530	13 document(s) restored successfully. 0 document(s) failed to restore.
+===================================================================================================================================================================
+test> use INVOICE
+switched to db INVOICE
+INVOICE> show dbs
+INVOICE   24.00 KiB
+admin    180.00 KiB
+config   108.00 KiB
+local     72.00 KiB
+test     112.00 KiB
+
+===============================================================================================================================================================
+
+

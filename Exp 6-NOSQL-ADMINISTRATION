@@ -3,6 +3,22 @@
 
 1. Write a MongoDB query to create a user “CUSTOMER1” and grant the read role in the INVOICE database.
 
+test> use admin
+switched to db admin
+admin> db.createUser({user:"customer1",pwd:"2301",roles:[{role:"read",db:"INVOICE"}]})
+{ ok: 1 }
+
+ksb@ksb-H410M-S2-V2:~$ mongosh -u customer1 -p 2301
+Current Mongosh Log ID:	648ad7f6854d064221f40f99
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.9.1
+Using MongoDB:		6.0.6
+Using Mongosh:		1.9.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+
 2. Write a MongoDB query to create the backup for the INVOICE database.
+
 
 3.Write a MongoDB query to restore a particular database or a collection.
